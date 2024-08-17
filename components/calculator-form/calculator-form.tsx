@@ -252,8 +252,8 @@ export function ProfileForm() {
                                 the
                                 prize pool.
                             </li>
-                            <li>If it's a friday tournament, <b>10% is subtracted</b> from the prize pool.</li>
-                            <li>If there's no undefeated players:
+                            <li>If it&apos;s a friday tournament, <b>10% is subtracted</b> from the prize pool.</li>
+                            <li>If there&apos;s no undefeated players:
                                 <ul className="ml-6 list-disc [&>li]:mt-2">
                                     <li>Simply divide the prize pool <b>equally amongst the number of players</b> in
                                         prizes
@@ -274,7 +274,7 @@ export function ProfileForm() {
                         <p className="leading-7 [&:not(:first-child)]:mt-6">In the rare case of only 2 players being in
                             the prize pool, where one is X-0, the
                             35% rule
-                            doesn't make sense. Find a better distribution yourself, such as 60/40.</p>
+                            doesn&apos;t make sense. Find a better distribution yourself, such as 60/40.</p>
 
 
                     </AccordionContent>
