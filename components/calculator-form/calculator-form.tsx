@@ -107,7 +107,6 @@ export function ProfileForm() {
                 </h1>
                 <ModeToggle/>
             </div>
-
             <p className="leading-7 [&:not(:first-child)]:my-6">
                 A simple calculator for prizes for tournaments at Faraos Cigarer
             </p>
@@ -124,7 +123,7 @@ export function ProfileForm() {
                                 <FormItem>
                                     <FormLabel>Total players</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input type={'number'} {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         This includes the tournament organizer
@@ -146,7 +145,7 @@ export function ProfileForm() {
                                         <FormItem>
                                             <FormLabel>Players in prizes</FormLabel>
                                             <FormControl>
-                                                <Input {...field} />
+                                                <Input type={'number'} {...field} />
                                             </FormControl>
                                             <FormDescription>
                                                 This is usually players who went X-1 or better
@@ -209,7 +208,7 @@ export function ProfileForm() {
                                                         <FormItem>
                                                             <FormLabel>Entry fee (kr.)</FormLabel>
                                                             <FormControl>
-                                                                <Input placeholder="50" {...field} />
+                                                                <Input placeholder="50" type={'number'} {...field} />
                                                             </FormControl>
                                                             <FormMessage />
                                                         </FormItem>
@@ -376,14 +375,6 @@ export function ProfileForm() {
                                 </ul>
                             </li>
                         </ol>
-                        <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
-                            Note of weird cases:
-                        </h3>
-                        <p className="leading-7 [&:not(:first-child)]:mt-6">
-                            In the rare case of only 2 players being in the prize pool, where one is
-                            X-0, the 35% rule doesn&apos;t make sense. Find a better distribution
-                            yourself, such as 60/40.
-                        </p>
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
