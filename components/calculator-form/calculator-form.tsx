@@ -16,6 +16,15 @@ import {
 } from '@/components/ui/form';
 import {Input} from '@/components/ui/input';
 import {Checkbox} from '@/components/ui/checkbox';
+import {ModeToggle} from '@/components/ui/mode-toggle';
+
+
+import {
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+} from "@/components/ui/tabs"
 
 import {
     Dialog,
@@ -92,9 +101,13 @@ export function ProfileForm() {
 
     return (
         <div className="p-8">
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-                Prize calculator
-            </h1>
+            <div className="flex flex-row justify-between">
+                <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+                    Prize calculator
+                </h1>
+                <ModeToggle/>
+            </div>
+
             <p className="leading-7 [&:not(:first-child)]:my-6">
                 A simple calculator for prizes for tournaments at Faraos Cigarer
             </p>
@@ -120,107 +133,174 @@ export function ProfileForm() {
                                 </FormItem>
                             )}
                         />
-                        <FormField
-                            control={form.control}
-                            name="prizesPlayer"
-                            render={({field}) => (
-                                <FormItem>
-                                    <FormLabel>Players in prizes</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} />
-                                    </FormControl>
-                                    <FormDescription>
-                                        This is usually players who went X-1 or better
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="undefeatedPlayer"
-                            render={({field}) => (
-                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                                    <FormControl>
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={field.onChange}
-                                        />
-                                    </FormControl>
-                                    <div className="space-y-1 leading-none">
-                                        <FormLabel>X-0 player amongst winners</FormLabel>
-                                        <FormDescription>
-                                            Distributes 60%, 40% or 35% of the prize pool towards a single
-                                            player when there&apos;s 2, 3 or 4+ players in the prize pool.
-                                        </FormDescription>
-                                    </div>
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="isFriday"
-                            render={({field}) => (
-                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                                    <FormControl>
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={field.onChange}
-                                        />
-                                    </FormControl>
-                                    <div className="space-y-1 leading-none">
-                                        <FormLabel>Friday tournament</FormLabel>
-                                        <FormDescription>
-                                            10% of the prize pool from a friday tournament goes
-                                            towards a bigger tournament
-                                        </FormDescription>
-                                    </div>
-                                </FormItem>
-                            )}
-                        />
-                        <Accordion type="single" collapsible className="w-full mt-4">
-                            <AccordionItem value="item-1">
-                                <AccordionTrigger>Additional settings</AccordionTrigger>
-                                <AccordionContent>
-                                    <div className="space-y-8 p-4">
-                                        <FormField
-                                            control={form.control}
-                                            name="entryFee"
-                                            render={({field}) => (
-                                                <FormItem>
-                                                    <FormLabel>Entry fee (kr.)</FormLabel>
-                                                    <FormControl>
-                                                        <Input placeholder="50" {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="toCut"
-                                            render={({field}) => (
-                                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                                                    <FormControl>
-                                                        <Checkbox
-                                                            checked={field.value}
-                                                            onCheckedChange={field.onChange}
-                                                        />
-                                                    </FormControl>
-                                                    <div className="space-y-1 leading-none">
-                                                        <FormLabel>Apply TO cut?</FormLabel>
-                                                        <FormDescription>
-                                                            This removes the entry fee + a 50 kr.
-                                                            cut from the prize pool.
-                                                        </FormDescription>
-                                                    </div>
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                </AccordionContent>
-                            </AccordionItem>
-                        </Accordion>
+                        <Tabs defaultValue="account">
+                            <TabsList className="grid w-full grid-cols-2">
+                                <TabsTrigger value="account">X-1 or better</TabsTrigger>
+                                <TabsTrigger value="password">Top 8</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="account" className="space-y-8">
+                                <FormField
+                                    control={form.control}
+                                    name="prizesPlayer"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>Players in prizes</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                            <FormDescription>
+                                                This is usually players who went X-1 or better
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="undefeatedPlayer"
+                                    render={({field}) => (
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                            <div className="space-y-1 leading-none">
+                                                <FormLabel>X-0 player amongst winners</FormLabel>
+                                                <FormDescription>
+                                                    Distributes 60%, 40% or 35% of the prize pool towards a single
+                                                    player when there&apos;s 2, 3 or 4+ players in the prize pool.
+                                                </FormDescription>
+                                            </div>
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="isFriday"
+                                    render={({field}) => (
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                />
+                                            </FormControl>
+                                            <div className="space-y-1 leading-none">
+                                                <FormLabel>Friday tournament</FormLabel>
+                                                <FormDescription>
+                                                    10% of the prize pool from a friday tournament goes
+                                                    towards a bigger tournament
+                                                </FormDescription>
+                                            </div>
+                                        </FormItem>
+                                    )}
+                                />
+                                <Accordion type="single" collapsible className="w-full mt-4">
+                                    <AccordionItem value="item-1">
+                                        <AccordionTrigger>Additional settings</AccordionTrigger>
+                                        <AccordionContent>
+                                            <div className="space-y-8 p-4">
+                                                <FormField
+                                                    control={form.control}
+                                                    name="entryFee"
+                                                    render={({field}) => (
+                                                        <FormItem>
+                                                            <FormLabel>Entry fee (kr.)</FormLabel>
+                                                            <FormControl>
+                                                                <Input placeholder="50" {...field} />
+                                                            </FormControl>
+                                                            <FormMessage />
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                                <FormField
+                                                    control={form.control}
+                                                    name="toCut"
+                                                    render={({field}) => (
+                                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                                            <FormControl>
+                                                                <Checkbox
+                                                                    checked={field.value}
+                                                                    onCheckedChange={field.onChange}
+                                                                />
+                                                            </FormControl>
+                                                            <div className="space-y-1 leading-none">
+                                                                <FormLabel>Apply TO cut?</FormLabel>
+                                                                <FormDescription>
+                                                                    This removes the entry fee + a 50 kr.
+                                                                    cut from the prize pool.
+                                                                </FormDescription>
+                                                            </div>
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
+                            </TabsContent>
+                            <TabsContent value="password" className="space-y-8">
+                                TBA
+                                {false && <><FormField
+                                    control={form.control}
+                                    name="prizesPlayer"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>First place</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="prizesPlayer"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>Second place</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="prizesPlayer"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>3-4 place</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="prizesPlayer"
+                                    render={({field}) => (
+                                        <FormItem>
+                                            <FormLabel>5-8</FormLabel>
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                /></>}
+                            </TabsContent>
+                        </Tabs>
+
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button type="submit" disabled={!form.formState.isValid}>
