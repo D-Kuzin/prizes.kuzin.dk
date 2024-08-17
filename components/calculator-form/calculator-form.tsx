@@ -33,7 +33,6 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import {useState} from 'react';
-import {Separator} from '@/components/ui/separator';
 
 const formSchema = z.object({
     players: z.coerce.number({invalid_type_error: 'Not a number'}).min(1),
@@ -76,10 +75,12 @@ export function ProfileForm() {
             prizePool = prizePool * 0.9;
         }
 
+        const undefeatedCut = values.prizesPlayer === 2 ? 0.6 : values.prizesPlayer === 3 ? 0.4 : 0.35
+
         const result: Result = {
-            undefeatedPrize: values.undefeatedPlayer ? prizePool * 0.35 : undefined,
+            undefeatedPrize: values.undefeatedPlayer ? prizePool * undefeatedCut : undefined,
             prize:
-                (values.undefeatedPlayer ? prizePool * (1 - 0.35) : prizePool) /
+                (values.undefeatedPlayer ? prizePool * (1 - undefeatedCut) : prizePool) /
                 (values.prizesPlayer - (values.undefeatedPlayer ? 1 : 0)),
             prizePlayer: values.prizesPlayer - (values.undefeatedPlayer ? 1 : 0),
             toCut: values.toCut ? 50 : undefined,
@@ -149,8 +150,8 @@ export function ProfileForm() {
                                     <div className="space-y-1 leading-none">
                                         <FormLabel>X-0 player amongst winners</FormLabel>
                                         <FormDescription>
-                                            Distributes 35% of the prize pool towards a single
-                                            player
+                                            Distributes 60%, 40% or 35% of the prize pool towards a single
+                                            player when there's 2, 3 or 4+ players in the prize pool.
                                         </FormDescription>
                                     </div>
                                 </FormItem>
