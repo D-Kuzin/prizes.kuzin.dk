@@ -153,23 +153,6 @@ export function ProfileForm() {
                             </FormItem>
                         )}
                     />
-                    <Separator/>
-                    <h3 className="mt-2 scroll-m-20 text-2xl font-semibold tracking-tight">
-                        Additional settings
-                    </h3>
-                    <FormField
-                        control={form.control}
-                        name="entryFee"
-                        render={({field}) => (
-                            <FormItem>
-                                <FormLabel>Entry fee (kr.)</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="50" {...field} />
-                                </FormControl>
-                                <FormMessage/>
-                            </FormItem>
-                        )}
-                    />
                     <FormField
                         control={form.control}
                         name="isFriday"
@@ -192,28 +175,50 @@ export function ProfileForm() {
                             </FormItem>
                         )}
                     />
-                    <FormField
-                        control={form.control}
-                        name="toCut"
-                        render={({field}) => (
-                            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                                <FormControl>
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
+                    <Accordion type="single" collapsible className="w-full mt-4">
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Additional settings</AccordionTrigger>
+                            <AccordionContent>
+                                <div className="space-y-8 p-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="entryFee"
+                                        render={({field}) => (
+                                            <FormItem>
+                                                <FormLabel>Entry fee (kr.)</FormLabel>
+                                                <FormControl>
+                                                    <Input placeholder="50" {...field} />
+                                                </FormControl>
+                                                <FormMessage/>
+                                            </FormItem>
+                                        )}
                                     />
-                                </FormControl>
-                                <div className="space-y-1 leading-none">
-                                    <FormLabel>
-                                        Apply TO cut?
-                                    </FormLabel>
-                                    <FormDescription>
-                                        This removes the entry fee + a 50 kr. cut from the prize pool.
-                                    </FormDescription>
+                                    <FormField
+                                        control={form.control}
+                                        name="toCut"
+                                        render={({field}) => (
+                                            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value}
+                                                        onCheckedChange={field.onChange}
+                                                    />
+                                                </FormControl>
+                                                <div className="space-y-1 leading-none">
+                                                    <FormLabel>
+                                                        Apply TO cut?
+                                                    </FormLabel>
+                                                    <FormDescription>
+                                                        This removes the entry fee + a 50 kr. cut from the prize pool.
+                                                    </FormDescription>
+                                                </div>
+                                            </FormItem>
+                                        )}
+                                    />
                                 </div>
-                            </FormItem>
-                        )}
-                    />
+
+                            </AccordionContent></AccordionItem></Accordion>
+
 
                     <Dialog>
                         <DialogTrigger asChild>
