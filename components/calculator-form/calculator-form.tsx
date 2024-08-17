@@ -151,7 +151,7 @@ export function ProfileForm() {
                                         <FormLabel>X-0 player amongst winners</FormLabel>
                                         <FormDescription>
                                             Distributes 60%, 40% or 35% of the prize pool towards a single
-                                            player when there's 2, 3 or 4+ players in the prize pool.
+                                            player when there&apos;s 2, 3 or 4+ players in the prize pool.
                                         </FormDescription>
                                     </div>
                                 </FormItem>
