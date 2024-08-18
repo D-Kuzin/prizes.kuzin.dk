@@ -129,8 +129,6 @@ export function ProfileForm() {
         let prizePool = values.players * values.entryFee;
         let fridayPool;
 
-
-
         if (values.isFriday) {
             fridayPool =  prizePool * 0.1;
             prizePool = prizePool * 0.9;
@@ -306,6 +304,8 @@ export function ProfileForm() {
                                                     <FormLabel>First place (%)</FormLabel>
                                                     <FormControl>
                                                         <Input
+                                                            min={0}
+                                                            max={100}
                                                             type="number"
                                                             placeholder="0"
                                                             {...field}
@@ -328,6 +328,8 @@ export function ProfileForm() {
                                                     <FormLabel>Second place (%)</FormLabel>
                                                     <FormControl>
                                                         <Input
+                                                            min={0}
+                                                            max={100}
                                                             type="number"
                                                             placeholder="0"
                                                             {...field}
@@ -345,6 +347,8 @@ export function ProfileForm() {
                                                     <FormLabel>3-4 place (%)</FormLabel>
                                                     <FormControl>
                                                         <Input
+                                                            min={0}
+                                                            max={100}
                                                             type="number"
                                                             placeholder="0"
                                                             {...field}
@@ -362,6 +366,8 @@ export function ProfileForm() {
                                                     <FormLabel>5-8 place (%)</FormLabel>
                                                     <FormControl>
                                                         <Input
+                                                            min={0}
+                                                            max={100}
                                                             type="number"
                                                             placeholder="0"
                                                             {...field}
@@ -626,12 +632,12 @@ export function ProfileForm() {
                                 Initial prize pool being: <b>total players * entry fee</b>
                             </li>
                             <li>
-                                If tournament organizer compensation is given, the{' '}
-                                <b>entry fee + 50 kr is subtracted</b> from the prize pool.
-                            </li>
-                            <li>
                                 If it&apos;s a friday tournament, <b>10% is subtracted</b> from the
                                 prize pool.
+                            </li>
+                            <li>
+                                If tournament organizer compensation is given, the{' '}
+                                <b>entry fee + 50 kr is subtracted</b> from the prize pool.
                             </li>
                             <li>
                                 If there&apos;s no undefeated players:
