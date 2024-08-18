@@ -35,7 +35,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 import {Trophy, Medal, HandCoins, PiggyBank} from 'lucide-react';
 
 const formSchema = z.object({
@@ -129,13 +129,15 @@ export function ProfileForm() {
         let prizePool = values.players * values.entryFee;
         let fridayPool;
 
-        if (values.toCut) {
-            prizePool = prizePool - values.entryFee - 50;
-        }
+
 
         if (values.isFriday) {
             fridayPool =  prizePool * 0.1;
             prizePool = prizePool * 0.9;
+        }
+
+        if (values.toCut) {
+            prizePool = prizePool - values.entryFee - 50;
         }
 
         if (values.mode === 'x1') {
