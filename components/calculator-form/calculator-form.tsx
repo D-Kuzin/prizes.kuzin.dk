@@ -490,11 +490,14 @@ export function ProfileForm() {
                                                                 Winner
                                                             </h3>
                                                             <div className="flex flex-row gap-2 items-center">
-                                                                <Trophy />
+                                                                <Trophy/>
+                                                                <h3 className="tracking-tight text-sm font-bold">
+                                                                    1 player
+                                                                </h3>
                                                             </div>
                                                         </div>
                                                         <div className="p-6 pt-0">
-                                                            <div className="text-2xl font-bold">
+                                                        <div className="text-2xl font-bold">
                                                                 {Math.floor(result.structure.first)} kr.
                                                             </div>
                                                         </div>
@@ -507,11 +510,14 @@ export function ProfileForm() {
                                                                 Runner-up
                                                             </h3>
                                                             <div className="flex flex-row gap-2 items-center">
-                                                                <Medal />
+                                                                <Medal/>
+                                                                <h3 className="tracking-tight text-sm font-bold">
+                                                                    1 player
+                                                                </h3>
                                                             </div>
                                                         </div>
                                                         <div className="p-6 pt-0">
-                                                            <div className="text-2xl font-bold">
+                                                        <div className="text-2xl font-bold">
                                                                 {Math.floor(result.structure.second)} kr.
                                                             </div>
                                                         </div>
@@ -524,7 +530,6 @@ export function ProfileForm() {
                                                                 3rd-4th place
                                                             </h3>
                                                             <div className="flex flex-row gap-2 items-center">
-                                                                <Medal />
                                                                 <h3 className="tracking-tight text-sm font-bold">
                                                                     2 players
                                                                 </h3>
@@ -547,7 +552,6 @@ export function ProfileForm() {
                                                                 5th-8th place
                                                             </h3>
                                                             <div className="flex flex-row gap-2 items-center">
-                                                                <Medal />
                                                                 <h3 className="tracking-tight text-sm font-bold">
                                                                     4 players
                                                                 </h3>

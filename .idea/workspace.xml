@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="39375496-a8b8-4570-a332-4e11ec9dfa20" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/components/calculator-form/calculator-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/calculator-form/calculator-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dialog.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
       <updated>1723919874887</updated>
       <workItem from="1723919876773" duration="7041000" />
       <workItem from="1723927181841" duration="1253000" />
-      <workItem from="1723928472137" duration="12293000" />
+      <workItem from="1723928472137" duration="12400000" />
     </task>
     <servers />
   </component>
