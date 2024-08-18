@@ -127,12 +127,14 @@ export function ProfileForm() {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         let prizePool = values.players * values.entryFee;
+        let fridayPool;
 
         if (values.toCut) {
             prizePool = prizePool - values.entryFee - 50;
         }
 
         if (values.isFriday) {
+            fridayPool =  prizePool * 0.1;
             prizePool = prizePool * 0.9;
         }
 
@@ -158,7 +160,7 @@ export function ProfileForm() {
                     prizePlayer: values.prizesPlayer - (values.undefeatedPlayer ? 1 : 0),
                 },
                 toCut: values.toCut ? 50 : undefined,
-                fridayPool: values.isFriday ? prizePool * 0.1 : undefined,
+                fridayPool,
             };
 
             setResult(result);
@@ -434,7 +436,7 @@ export function ProfileForm() {
                             <DialogContent>
                                 <DialogHeader>
                                     <DialogTitle>Results</DialogTitle>
-                                    <DialogDescription className="space-y-4 pt-4">
+                                    <DialogDescription className="space-y-4 pt-4 overflow-y-scroll">
                                         {result?.structure.mode === 'x1' ?
                                             <>
                                                 {result?.structure.undefeatedPrize && (
