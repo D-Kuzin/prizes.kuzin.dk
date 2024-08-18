@@ -235,8 +235,7 @@ export function ProfileForm() {
                                     <div className="space-y-1 leading-none">
                                         <FormLabel>Friday tournament</FormLabel>
                                         <FormDescription>
-                                            10% of the prize pool from a friday
-                                            tournament goes towards a bigger
+                                            Set aside 10% of the prize pool towards a bigger
                                             tournament
                                         </FormDescription>
                                     </div>
